@@ -5,21 +5,24 @@ import BlogDetails from './Components/BlogDetail';
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import NotFound from './Components/NotFound';
 import axios from 'axios';
-import { useEffect} from 'react'
+import { useEffect, useState} from 'react'
 import { baseURL, config} from './services'
 
 function App() {
+  const [blogs, setBlogs] = useState([])
+  const [toggleFetch, setToggleFetch] = useState(false)
+
   useEffect(() => {
     const getBlogs = async () => {
  
     // make an axios get call to our url, with our config object and save the response
     const response = await axios.get(baseURL, config)
     // console log the response's data
-    console.log(response.data.records)
+    setBlogs(response.data.records)
 
     }
     getBlogs()
-  },[])
+  },[toggleFetch])
 
   return (
     <Router>
@@ -28,17 +31,17 @@ function App() {
         <div className="content">
           <Switch>
             <Route exact path="/">
-              {/* <Home /> */}
+              <Home />
             </Route>
             <Route path="/create">
-              {/* <Create /> */}
+              <Create />
             </Route>
             <Route path="/blogs/:id">
               {/* edit route */}
-              {/* <BlogDetails /> */}
+              <BlogDetails />
             </Route>
             <Route path="*">
-              {/* <NotFound /> */}
+              <NotFound />
             </Route>
           </Switch>
         </div>
