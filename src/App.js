@@ -4,6 +4,7 @@ import Create from './Components/Create';
 import BlogDetails from './Components/BlogDetail';
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import NotFound from './Components/NotFound';
+import axios from 'axios';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
               <Create />
             </Route>
             <Route path="/blogs/:id">
+              {/* edit route */}
               <BlogDetails />
             </Route>
             <Route path="*">
