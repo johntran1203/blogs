@@ -8,6 +8,7 @@ import axios from 'axios';
 import { useEffect, useState} from 'react'
 import { baseURL, config} from './services'
 import BlogList from './Components/BlogList';
+import Form from './Components/Form';
 
 function App() {
   const [blogs, setBlogs] = useState([])
@@ -44,6 +45,9 @@ function App() {
             </Route>
             <Route path="/create">
               <Create />
+            </Route>
+            <Route path="/form">
+              <Form  setToggleFetch={setToggleFetch}/>
             </Route>
             <Route path="/blogs/:id">
               {/* edit route */}
