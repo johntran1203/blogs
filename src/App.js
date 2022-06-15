@@ -7,6 +7,7 @@ import NotFound from './Components/NotFound';
 import axios from 'axios';
 import { useEffect, useState} from 'react'
 import { baseURL, config} from './services'
+import BlogList from './Components/BlogList';
 
 function App() {
   const [blogs, setBlogs] = useState([])
@@ -19,6 +20,7 @@ function App() {
     const response = await axios.get(baseURL, config)
     // console log the response's data
     setBlogs(response.data.records)
+    console.log(response.data.records)
 
     }
     getBlogs()
@@ -31,7 +33,14 @@ function App() {
         <div className="content">
           <Switch>
             <Route exact path="/">
-              <Home />
+              <main>
+                {/* map through the blogs array and render a p tag for each one with the blog's name field as its text content */}
+                {blogs.map((blog) => (
+                  <BlogList blog ={blog} key ={blog.id}/>
+                ))}
+                <h1>hello</h1>
+              </main>
+              {/* <Home /> */}
             </Route>
             <Route path="/create">
               <Create />
