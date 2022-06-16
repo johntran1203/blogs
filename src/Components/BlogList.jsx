@@ -34,6 +34,9 @@ const BlogList = ( props) => {
       <h3>{title}</h3>
       <h5>{body}</h5>
       <button onClick={deleteBlog}>DELETE</button>
+      <Link to={'/edit/${props.blog.id}'}>
+        <button>Edit</button>
+      </Link>
     </div>
   );
 }

@@ -21,7 +21,7 @@ function App() {
     const response = await axios.get(baseURL, config)
     // console log the response's data
     setBlogs(response.data.records)
-    console.log(response.data.records)
+    // console.log(response.data.records)
 
     }
     getBlogs()
@@ -52,6 +52,10 @@ function App() {
             <Route path="/blogs/:id">
               {/* edit route */}
               <BlogDetails />
+            </Route>
+            <Route path="/edit/:id">
+              
+            <Form blogs={blogs} setToggleFetch={setToggleFetch}/>
             </Route>
             <Route path="*">
               <NotFound />
