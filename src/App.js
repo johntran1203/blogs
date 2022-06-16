@@ -37,7 +37,7 @@ function App() {
               <main>
                 {/* map through the blogs array and render a p tag for each one with the blog's name field as its text content */}
                 {blogs.map((blog) => (
-                  <BlogList blog ={blog} key ={blog.id}/>
+                  <BlogList blog ={blog} key ={blog.id} setToggleFetch={setToggleFetch}/>
                 ))}
                 <h1>hello</h1>
               </main>
